@@ -1,0 +1,45 @@
+<article class="p-4 text-white bg-green-400 lg:h-full">
+  <h1 class="uppercase text-center font-bold">Meteo</h1>
+
+<!-- article.component.html -->
+<form class="my-4" (ngSubmit)="getWeather()">
+    <select [(ngModel)]="cityInput" name="cityInput" class="text-black">
+      <option value="" disabled selected>Choisie un pays</option>
+      <option *ngFor="let country of countries" [value]="country">{{ country }}</option>
+    </select>
+    <input type="text" class="text-black"
+    #input
+    (keyup)="0"
+    >
+    <button type="submit">Soumetre</button>
+</form>
+ <p>{{input.value}}</p>
+<div *ngIf="errorMessage">{{ errorMessage }}</div>
+
+<div *ngIf="data">
+
+  <table class="table-auto">
+    <thead>
+      <tr>
+        <th class="px-4 py-2">Pays</th>
+        <th class="px-4 py-2">Capitale</th>
+        <th class="px-4 py-2">Laltitude</th>
+        <th class="px-4 py-2">Longitude</th>
+        <th class="px-4 py-2">Temperature</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="px-4 py-2">{{ location.country }}</td>
+        <td class="px-4 py-2">{{ location.name }}</td>
+        <td class="px-4 py-2">{{ location.lat }}</td>
+        <td class="px-4 py-2">{{ location.lon }}</td>
+        <td class="px-4 py-2">{{ current.temperature }} deg</td>
+      </tr>
+    </tbody>
+  </table>
+
+</div>
+
+
+</article>
