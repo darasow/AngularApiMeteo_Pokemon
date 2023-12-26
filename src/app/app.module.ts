@@ -11,7 +11,9 @@ import { FooterComponent } from './footer/footer.component';
 import { NavComponent } from './nav/nav.component';
 import { ArticleComponent } from './article/article.component';
 import { AsidesComponent } from './asides/asides.component';
-import { PokemonComponent } from './pokemon/pokemon.component';
+import { AcceuilComponent } from './acceuil/acceuil.component';
+import { Page404Component } from './page404/page404.component';
+import { PokemonModuleModule } from './pokemon-module/pokemon-module.module';
 
 @NgModule({
   declarations: [
@@ -21,13 +23,15 @@ import { PokemonComponent } from './pokemon/pokemon.component';
     NavComponent,
     ArticleComponent,
     AsidesComponent,
-    PokemonComponent,
+    AcceuilComponent,
+    Page404Component,
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule,
     HttpClientModule,
     FormsModule, // Ajout de cette ligne
+    PokemonModuleModule,
+    AppRoutingModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
