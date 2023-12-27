@@ -1,7 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { Observable } from 'rxjs';
 import { PokemonService } from "../pokemon.service";
 
 @Component({
@@ -9,6 +8,7 @@ import { PokemonService } from "../pokemon.service";
   templateUrl: './pokemon.component.html',
   styleUrls: ['./pokemon.component.css']
 })
+
 export class PokemonComponent {
   pokemonData: any;
   pokemons: any[] | undefined;
