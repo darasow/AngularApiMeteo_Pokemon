@@ -22,7 +22,6 @@ export class PokemonComponent {
 
   ngOnInit() {
     // Effectuez la requête HTTP vers l'API Pokémon
-    // https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/
     
     this.PokemonService.getListePokemeon().subscribe((pokemons: any[]) => {
       this.pokemons = pokemons;
