@@ -1,0 +1,79 @@
+
+<form *ngIf="PokemonTraite" (ngSubmit)="onSubmit()" class="max-w-md mx-auto my-8 p-6 bg-white rounded-md shadow-md"  #pokemonForm="ngForm">
+    <div class="mb-4">
+      <label for="name" class="block text-gray-600 text-sm font-semibold mb-2">Name:</label>
+      <input type="text" id="name"
+         required
+         pattern="^[azA-Z0-9àéèç]"
+         [(ngModel)]="PokemonTraite.name" 
+         name="name"
+         #name="ngModel"
+        class="w-full border rounded-md py-2 px-3">
+        <div 
+        class="p-4 text-lg" [hidden]="name.valid || name.pristine"
+        >
+             Le nom du pokemon est requis (1-25)
+        </div>
+    </div>
+
+  
+    <div class="mb-4">
+      <label for="height" class="block text-gray-600 text-sm font-semibold mb-2">Taille:</label>
+      <input type="number"
+      id="height"
+      required
+      pattern="^[0-9]{1, 2}$"
+      name="height"
+      [(ngModel)]="PokemonTraite.height"
+       #height="ngModel"
+       class="w-full border rounded-md py-2 px-3">
+       <div 
+        class="p-4 text-lg" [hidden]="height.valid || height.pristine"
+        >
+             La taille est requis (1-2)
+        </div>
+    </div>
+  
+    <div class="mb-4">
+      <label for="weight" class="block text-gray-600 text-sm font-semibold mb-2">Taille:</label>
+      <input type="number"
+      id="weight"
+      required
+      pattern="^[0-9]{1, 2}$"
+      name="weight"
+      [(ngModel)]="PokemonTraite.weight"
+       #weight="ngModel"
+       class="w-full border rounded-md py-2 px-3">
+       <div 
+        class="p-4 text-lg" [hidden]="weight.valid || weight.pristine"
+        >
+             Le poids est requis (1-2)
+        </div>
+    </div>
+
+   <form action="">
+    <div  class="mb-4">
+      <div *ngFor="let type of typesListe" class="grid grid-cols-2 gap-4">
+        
+        <label for="types" class="block text-gray-600 text-sm font-semibold mb-2">{{type}}</label>
+        <input type="checkbox"
+      id="{{type}}"
+      [value]="type"
+       [checked]="hasType(type)"
+       class="w-full border rounded-md py-2 px-3 ">
+     
+       </div>
+      
+    </div>
+   </form>
+
+   
+
+
+
+
+
+  
+    <button type="submit" class="bg-blue-500 text-white py-2 px-4 rounded-md hover:bg-blue-600">Save Changes</button>
+  </form>
+  <h3 *ngIf="!PokemonTraite"> Aucun pokemon a editer....</h3>

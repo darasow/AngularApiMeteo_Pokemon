@@ -14,6 +14,9 @@ import { AsidesComponent } from './asides/asides.component';
 import { AcceuilComponent } from './acceuil/acceuil.component';
 import { Page404Component } from './page404/page404.component';
 import { PokemonModuleModule } from './pokemon-module/pokemon-module.module';
+import { MemoryDataService } from "./memory-data.service";
+import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
+import { PokemonApiService } from './teste';
 
 @NgModule({
   declarations: [
@@ -29,11 +32,16 @@ import { PokemonModuleModule } from './pokemon-module/pokemon-module.module';
   imports: [
     BrowserModule,
     HttpClientModule,
-    FormsModule, // Ajout de cette ligne
+    FormsModule, // Ajout de cette ligne pour les formulaires
     PokemonModuleModule,
-    AppRoutingModule,
+    HttpClientModule,
+    HttpClientInMemoryWebApiModule.forRoot(MemoryDataService,{passThruUnknownUrl: true}),
+     AppRoutingModule,
   ],
-  providers: [],
+  providers: [PokemonApiService],
   bootstrap: [AppComponent]
 })
+// npm install angular-in-memory-web-api --save-dev --legacy-peer-deps 
+// pour creer une simulation de base de donnee
+
 export class AppModule { }

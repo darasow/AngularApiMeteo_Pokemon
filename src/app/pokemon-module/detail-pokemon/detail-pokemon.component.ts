@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Inject, OnInit, Optional, forwardRef } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { PokemonService } from "../pokemon.service";
+import { MemoryDataService } from 'src/app/memory-data.service';
 
 
 @Component({
@@ -13,18 +14,18 @@ import { PokemonService } from "../pokemon.service";
 export class DetailPokemonComponent implements OnInit{
      constructor(private router : ActivatedRoute,
        private route : Router, 
-       private http: HttpClient,
-       private PokemonService : PokemonService
+        private pokemonService : PokemonService,
        )
        {}
      PokemonTraite : any|undefined
-
+     pokemonId : string | null | undefined
+      
      ngOnInit(): void {
-        const pokemonId : string|null = this.router.snapshot.paramMap.get('id')
-        
-        if(pokemonId)
+         this.pokemonId = this.router.snapshot.paramMap.get('id')
+        if(this.pokemonId)
         {
-          this.PokemonService.getPokemonUrl(+pokemonId).subscribe(
+          // this.idPok = pokemonId
+          this.pokemonService.getPokemonUrl(+this.pokemonId).subscribe(
             (pokemonTraite) => {
               this.PokemonTraite = pokemonTraite
             },
@@ -40,6 +41,11 @@ export class DetailPokemonComponent implements OnInit{
     goToHome()
     {
       this.route.navigate(['/Pokemons'])
+    }
+
+    goToEditPokemon(id : number)
+    {
+      this.route.navigate(['/Pokemons/form', id])
     }
       
 }

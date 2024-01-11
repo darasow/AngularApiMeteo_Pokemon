@@ -30,6 +30,7 @@
     "@angular/compiler-cli": "^16.2.0",
     "@types/country-list": "^2.1.4",
     "@types/jasmine": "~4.3.0",
+    "angular-in-memory-web-api": "^0.17.0",
     "autoprefixer": "^10.4.16",
     "jasmine-core": "~4.6.0",
     "karma": "~6.4.0",
@@ -42,3 +43,4 @@
     "typescript": "~5.1.3"
   }
 }
+

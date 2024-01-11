@@ -1,6 +1,7 @@
 <div *ngIf="PokemonTraite" class=" relative max-w-sm rounded overflow-hidden shadow-lg m-4">
   
   <a (click)="goToHome()" class="bg-blue-700 cursor-pointer text-white p-4 flex items-center justify-center ring-0  z-30">Retour</a>
+  <a *ngIf="pokemonId" (click)="goToEditPokemon(+pokemonId)" class="bg-blue-700 cursor-pointer text-white p-4 flex items-center justify-center ring-0  z-30">Editer</a>
   <img class="w-[200px] h-[200px]" src="{{ PokemonTraite.sprites?.front_default }}" alt="{{ PokemonTraite.name }}">
     <div class="px-6 py-4 z-10 ">
       <div class="font-bold text-xl mb-2">{{ PokemonTraite.name }}</div>
